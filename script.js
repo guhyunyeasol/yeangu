@@ -311,15 +311,11 @@
     const section = $('#gallery');
     if (!grid) return;
 
-    // Show loading placeholder
-    grid.innerHTML = '<div class="section-loading"><span class="section-loading__dot"></span><span class="section-loading__dot"></span><span class="section-loading__dot"></span></div>';
-
-    galleryImages = await loadImagesFromFolder('gallery');
-
-    if (galleryImages.length === 0) {
-      // Hide entire gallery section if no images found
-      if (section) section.style.display = 'none';
-      return;
+    // 갤러리 사진 장수를 직접 지정 (자동감지 대신)
+    const galleryCount = 6;
+    galleryImages = [];
+    for (let i = 1; i <= galleryCount; i++) {
+      galleryImages.push(`images/gallery/${i}.jpg`);
     }
 
     grid.innerHTML = galleryImages
@@ -359,7 +355,7 @@
       .map(
         (src) => `
       <div class="viewer__slide">
-        <img src="${src}" alt="" loading="lazy" />
+        <img src="${src}" alt="" loading="eager" />
       </div>
     `
       )
@@ -390,7 +386,7 @@
 
     if (track) {
       track.style.transition = animate ? 'transform 0.3s ease' : 'none';
-      track.style.transform = `translateX(-${idx * 100}vw)`;
+      track.style.transform = `translateX(-${idx * 100}%)`;
     }
     if (counter) {
       counter.textContent = `${idx + 1} / ${total}`;
