@@ -310,7 +310,7 @@
     const grid = $('#gallery-grid');
     if (!grid) return;
 
-    const galleryCount = 6;
+    const galleryCount = 7;
     galleryImages = [];
     for (let i = 1; i <= galleryCount; i++) {
       galleryImages.push(`images/gallery/${i}.jpg`);
