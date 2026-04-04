@@ -311,7 +311,6 @@
     const section = $('#gallery');
     if (!grid) return;
 
-    // 갤러리 사진 장수를 직접 지정 (자동감지 대신)
     const galleryCount = 6;
     galleryImages = [];
     for (let i = 1; i <= galleryCount; i++) {
@@ -335,7 +334,6 @@
       }
     });
 
-    // Re-observe new elements for scroll animations
     observeNewElements(grid);
   }
 
@@ -423,10 +421,11 @@
 
     track.addEventListener('touchmove', (e) => {
       if (!isSwiping) return;
+      e.preventDefault();
       touchDeltaX = e.touches[0].clientX - touchStartX;
       const offset = -(viewerIdx * window.innerWidth) + touchDeltaX;
       track.style.transform = `translateX(${offset}px)`;
-    }, { passive: true });
+    }, { passive: false });
 
     track.addEventListener('touchend', () => {
       if (!isSwiping) return;
