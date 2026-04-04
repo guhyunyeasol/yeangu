@@ -308,7 +308,6 @@
   /* ── Gallery (async — waits for image discovery) ── */
   async function initGallery() {
     const grid = $('#gallery-grid');
-    const section = $('#gallery');
     if (!grid) return;
 
     const galleryCount = 6;
@@ -675,6 +674,13 @@
 
   /* ── Init ── */
   async function init() {
+    // 페이지 전체 핀치줌 새로고침 방지
+    document.addEventListener('touchmove', (e) => {
+      if (e.touches.length > 1) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
     // Synchronous inits (no image dependency)
     initMeta();
     initCurtain();
@@ -691,7 +697,6 @@
 
     // Async inits (discover images, then render)
     await Promise.all([
-      initStory(),
       initGallery(),
     ]);
   }
