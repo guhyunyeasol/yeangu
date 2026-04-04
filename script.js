@@ -377,6 +377,11 @@
     viewer.classList.remove('is-active');
     viewer.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    // 아이폰 핀치줌 후 치우침 리셋
+    const viewport = document.querySelector('meta[name="viewport"]');
+    if (viewport) {
+      viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover');
+    }
   }
 
   function goToSlide(idx, animate = true) {
