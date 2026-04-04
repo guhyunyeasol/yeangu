@@ -890,7 +890,6 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -945,19 +944,19 @@ a {
   height: 100%;
   display: flex;
   align-items: center;
-  overflow: visible;
+  overflow: hidden;
   touch-action: pan-y;
 }
 
 .viewer__slide {
-  min-width: 100%;
+  flex: 0 0 100%;
   width: 100%;
-  flex-shrink: 0;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 16px;
+  overflow: hidden;
+  padding: 0;
 }
 
 .viewer__slide img {
@@ -967,6 +966,7 @@ a {
   border-radius: 4px;
   user-select: none;
   -webkit-user-drag: none;
+  margin: auto;
 }
 
 .viewer__nav {
