@@ -380,22 +380,17 @@
   }
 
   function goToSlide(idx, animate = true) {
-    const track = $('#viewer-track');
-    const counter = $('#viewer-counter');
-    const total = galleryImages.length;
-    if (total === 0) return;
-    if (idx < 0) idx = 0;
-    if (idx >= total) idx = total - 1;
-    viewerIdx = idx;
+  const track = document.querySelector('#viewer-track');
+  if (!track) return;
 
-    if (track) {
-      track.style.transition = animate ? 'transform 0.3s ease' : 'none';
-      track.style.transform = `translateX(-${idx * 100}vw)`;
-    }
-    if (counter) {
-      counter.textContent = `${idx + 1} / ${total}`;
-    }
+  track.style.transition = animate ? 'transform 0.3s ease-out' : 'none';
+  track.style.transform = `translateX(-${idx * 100}%)`;
+
+  const counter = document.querySelector('#viewer-counter');
+  if (counter) {
+    counter.textContent = `${idx + 1} / ${galleryImages.length}`;
   }
+}
 
   function initViewer() {
     const viewer = $('#viewer');
