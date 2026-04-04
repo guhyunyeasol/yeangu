@@ -722,8 +722,8 @@ a {
 
 .location__map-wrap img {
   width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
 }
 
 .location__buttons {
