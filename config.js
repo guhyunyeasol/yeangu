@@ -42,7 +42,7 @@ const CONFIG = {
     date: "2026-06-27",        // YYYY-MM-DD
     time: "11:10",             // HH:MM (24시간)
     dayOfWeek: "토요일",
-    venue: "더 컨벤션 잠실",
+    venue: "더 컨벤션 잠실 비스타홀",
     hall: "비스타홀 3층",
     address: "서울 송파구 올림픽로 319 3층",
     tel: "02-418-5000",
