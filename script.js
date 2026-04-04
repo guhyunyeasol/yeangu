@@ -359,7 +359,7 @@
       .map(
         (src) => `
       <div class="viewer__slide">
-        <img src="${src}" alt="" loading="eager" />
+        <img src="${src}" alt="" loading="lazy" />
       </div>
     `
       )
@@ -379,19 +379,23 @@
     document.body.style.overflow = '';
   }
 
- function goToSlide(idx, animate = true) {
-  const track = document.querySelector('#viewer-track');
-  if (!track) return;
+  function goToSlide(idx, animate = true) {
+    const track = $('#viewer-track');
+    const counter = $('#viewer-counter');
+    const total = galleryImages.length;
+    if (total === 0) return;
+    if (idx < 0) idx = 0;
+    if (idx >= total) idx = total - 1;
+    viewerIdx = idx;
 
-  track.style.transition = animate ? 'transform 0.3s ease-out' : 'none';
-  // 정확히 -100%, -200% 단위로 이동하게 설정
-  track.style.transform = 'translateX(-' + (idx * 100) + '%)';
-
-  const counter = document.querySelector('#viewer-counter');
-  if (counter) {
-    counter.textContent = (idx + 1) + ' / ' + galleryImages.length;
+    if (track) {
+      track.style.transition = animate ? 'transform 0.3s ease' : 'none';
+      track.style.transform = `translateX(-${idx * 100}vw)`;
+    }
+    if (counter) {
+      counter.textContent = `${idx + 1} / ${total}`;
+    }
   }
-}
 
   function initViewer() {
     const viewer = $('#viewer');
@@ -692,6 +696,7 @@
 
     // Async inits (discover images, then render)
     await Promise.all([
+      initStory(),
       initGallery(),
     ]);
   }
