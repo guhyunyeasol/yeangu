@@ -379,16 +379,17 @@
     document.body.style.overflow = '';
   }
 
-  function goToSlide(idx, animate = true) {
+ function goToSlide(idx, animate = true) {
   const track = document.querySelector('#viewer-track');
   if (!track) return;
 
   track.style.transition = animate ? 'transform 0.3s ease-out' : 'none';
-  track.style.transform = `translateX(-${idx * 100}%)`;
+  // 정확히 -100%, -200% 단위로 이동하게 설정
+  track.style.transform = 'translateX(-' + (idx * 100) + '%)';
 
   const counter = document.querySelector('#viewer-counter');
   if (counter) {
-    counter.textContent = `${idx + 1} / ${galleryImages.length}`;
+    counter.textContent = (idx + 1) + ' / ' + galleryImages.length;
   }
 }
 
