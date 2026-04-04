@@ -40,6 +40,7 @@ html {
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -949,14 +950,13 @@ a {
 }
 
 .viewer__slide {
-  flex: 0 0 100%;
-  width: 100%;
+  min-width: 100%;
+  flex-shrink: 0;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  padding: 0;
+  padding: 60px 16px;
 }
 
 .viewer__slide img {
@@ -966,7 +966,6 @@ a {
   border-radius: 4px;
   user-select: none;
   -webkit-user-drag: none;
-  margin: auto;
 }
 
 .viewer__nav {
