@@ -91,7 +91,6 @@ a {
   justify-content: center;
   overflow: hidden;
   pointer-events: auto;
-  background-color: #faf3e8;
   transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
@@ -111,8 +110,8 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding-top: 22vh;
+  justify-content: center;
+  background-color: #faf3e8;
 }
 
 .curtain__image {
@@ -122,45 +121,35 @@ a {
   height: 100%;
   object-fit: contain;
   object-position: center;
-  background-color: #faf3e8;
 }
 
 .curtain__text {
-  position: relative;
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1;
   text-align: center;
-}
-
-.curtain__names {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2.2rem;
-  color: var(--white);
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.05em;
-}
-
-.curtain__msg {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 2rem;
-  letter-spacing: 0.15em;
+  width: 100%;
 }
 
 .curtain__btn {
   display: inline-block;
   padding: 14px 48px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--rose-light);
   border-radius: 50px;
   font-size: 0.9rem;
-  color: var(--white);
+  color: var(--rose);
   letter-spacing: 0.1em;
   transition: all 0.3s ease;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(4px);
+  white-space: nowrap;
 }
 
 .curtain__btn:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--rose);
+  color: var(--white);
 }
 
 /* ── Petals Canvas ── */
