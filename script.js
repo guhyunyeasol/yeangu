@@ -66,28 +66,22 @@
   function initCurtain() {
     const curtain = $('#curtain');
 
-    // If useCurtain is false, skip the curtain entirely
     if (CONFIG.useCurtain === false) {
-      if (curtain) {
-        curtain.style.display = 'none';
-      }
-      // Start petals immediately since there's no curtain to open
+      if (curtain) curtain.style.display = 'none';
       initPetals();
       return;
     }
 
-    // Default behaviour (useCurtain is true or undefined for backwards compat)
     const names = $('#curtain-names');
     const btn = $('#curtain-open');
     if (names) {
-      names.textContent =
-        CONFIG.groom.fullName + ' & ' + CONFIG.bride.fullName;
+      names.textContent = CONFIG.groom.fullName + ' & ' + CONFIG.bride.fullName;
     }
     if (btn) {
       btn.addEventListener('click', () => {
         curtain.classList.add('is-open');
         document.body.style.overflow = '';
-        setTimeout(() => curtain.classList.add('is-hidden'), 1400);
+        setTimeout(() => curtain.classList.add('is-hidden'), 1000);
         initPetals();
       });
     }
@@ -310,7 +304,7 @@
     const grid = $('#gallery-grid');
     if (!grid) return;
 
-    const galleryCount = 14;
+    const galleryCount = 7;
     galleryImages = [];
     for (let i = 1; i <= galleryCount; i++) {
       galleryImages.push(`images/gallery/${i}.jpg`);
